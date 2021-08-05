@@ -1,6 +1,11 @@
 <dx-tile-view
     direction="vertical">
     <dxi-item *ngFor="let poke of pokeList">
-        <img [src]="poke.img" alt="poke.name">
+        <img [src]="poke.img" alt="poke.name | titleCase">
+        <div *dxTemplate >
+            <div class="pokemon-name">
+                {{ poke.name | titleCase}}
+            </div>
+        </div>
     </dxi-item>
 </dx-tile-view>

@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PokemonGridComponent } from './components/pokemon-grid/pokemon-grid.component';
 
-import { PokeapiService } from './services/pokeapi.service'
+import { PokeapiService } from './services/pokeapi.service';
+import { TitleCasePipe } from './pipes/title-case.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PokemonGridComponent
+    PokemonGridComponent,
+    TitleCasePipe
   ],
   imports: [
     BrowserModule,

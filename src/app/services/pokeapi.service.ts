@@ -53,7 +53,7 @@ export class PokeapiService {
 
   getFirstList() {
     const offset: number =  0;
-    const limit: number = 25;
+    const limit: number = 30;
 
     // generate API Url Link
     const firstSetApiUrl: string = `${this.pokemonApi}?offset=${offset}&limit=${limit}`
