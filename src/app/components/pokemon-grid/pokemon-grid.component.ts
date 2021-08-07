@@ -23,4 +23,12 @@ export class PokemonGridComponent implements OnInit {
     this.pokeService.getFirstList();
   }
 
+  navigateNext() {
+    this.pokeService.getNextPage()
+  }
+
+  navigatePrev() {
+    this.pokeService.getPrevPage()
+  }
+
 }

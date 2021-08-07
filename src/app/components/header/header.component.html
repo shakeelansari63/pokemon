@@ -1,12 +1,16 @@
 <header>
-    <dx-toolbar>
+    <dx-toolbar class="header-toolbar">
         <dxi-item
             location="before"
             widget="dxButton"
             locateInMenu="never">
             <div *dxTemplate>
-                <div class="app-name">Pokemon Registry</div>
+                <div class="app-name dx-theme-accent-as-text-color">Pokemon Registry</div>
             </div>
+        </dxi-item>
+        <dxi-item
+            location="after">
+            <dx-text-box placeholder="Search"></dx-text-box>
         </dxi-item>
     </dx-toolbar>
 </header>

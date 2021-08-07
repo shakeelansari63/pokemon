@@ -1,5 +1,47 @@
+// * {
+//   border: 1px solid black;
+// }
+//@import "../../../../node_modules/devextreme/scss/bundles/dx.softblue.scss";
+
 .pokemon-name {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.pokemon-nav {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+}
+
+.pokemon-unit {
+  width: 150px;
+  height: 150px;
+  text-align: center;
+
+  &:hover {
+    transform: scale(90%);
+  }
+}
+
+@media (max-width: 850px) {
+  .pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(13, 1fr);
+  }
 }

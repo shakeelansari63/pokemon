@@ -15,29 +15,25 @@ export class PokeapiService {
   // Create Subjects and Observables
   pokemons$: Subject<PokemonListItem[]>;
   pokemons: Observable<PokemonListItem[]>;
-  nextPokemonApi$: Subject<string | null>;
-  nextPokemonApi: Observable<string | null>;
-  prevPokemonApi$: Subject<string | null>;
-  prevPokemonApi: Observable<string | null>;
+  nextPokemonApi: string;
+  prevPokemonApi: string;
 
   constructor(private http: HttpClient) {
     // Initialize Subjects and Observables
     this.pokemons$ = new Subject();
     this.pokemons = this.pokemons$.asObservable();
-
-    this.nextPokemonApi$ = new Subject();
-    this.nextPokemonApi = this.nextPokemonApi$.asObservable();
-
-    this.prevPokemonApi$ = new Subject();
-    this.prevPokemonApi = this.prevPokemonApi$.asObservable();
   }
 
   getPokemonList(url: string) {
+    // Error Handling 
+    if (! url) {
+      return;
+    }
     // Make API call and Set Subjects
     this.http.get(url).subscribe(pList => {
       const pokeList = pList as PokemonList;
-      this.nextPokemonApi$.next(pokeList.next);
-      this.prevPokemonApi$.next(pokeList.previous);
+      this.nextPokemonApi = pokeList.next;
+      this.prevPokemonApi = pokeList.previous;
       
       // Loop Over Pokelist Urls 
       pokeList.results.forEach(pokemon => {
@@ -53,11 +49,19 @@ export class PokeapiService {
 
   getFirstList() {
     const offset: number =  0;
-    const limit: number = 30;
+    const limit: number = 25;
 
     // generate API Url Link
     const firstSetApiUrl: string = `${this.pokemonApi}?offset=${offset}&limit=${limit}`
 
     this.getPokemonList(firstSetApiUrl);
+  }
+
+  getNextPage() {
+    this.getPokemonList(this.nextPokemonApi)
+  }
+
+  getPrevPage() {
+    this.getPokemonList(this.prevPokemonApi)
   }
 }

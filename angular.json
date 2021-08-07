@@ -31,8 +31,8 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/devextreme/dist/css/dx.common.css",
-              "node_modules/devextreme/dist/css/dx.material.purple.light.css",
+              "node_modules/devextreme/scss/bundles/dx.common.scss",
+              "node_modules/devextreme/scss/bundles/dx.softblue.scss",
               "src/styles.scss"
             ],
             "scripts": []

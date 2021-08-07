@@ -1,11 +1,18 @@
-<dx-tile-view
-    direction="vertical">
-    <dxi-item *ngFor="let poke of pokeList">
-        <img [src]="poke.img" alt="poke.name | titleCase">
-        <div >
+<div class="pokemon-nav container" >
+    <div class="navigate-icon">
+        <dx-button icon="chevronleft" (click)="navigatePrev()"></dx-button>
+    </div>
+
+    <div class="pokemon-grid">
+        <div *ngFor="let poke of pokeList" class="pokemon-unit">
+            <img [src]="poke.img" alt="poke.name">
             <div class="pokemon-name">
                 {{ poke.name | titleCase}}
             </div>
         </div>
-    </dxi-item>
-</dx-tile-view>
+    </div>
+
+    <div class="navigate-icon">
+        <dx-button icon="chevronright" (click)="navigateNext()"></dx-button>
+    </div>
+</div>
