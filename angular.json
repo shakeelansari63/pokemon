@@ -32,7 +32,7 @@
             ],
             "styles": [
               "node_modules/devextreme/scss/bundles/dx.common.scss",
-              "node_modules/devextreme/scss/bundles/dx.softblue.scss",
+              "node_modules/devextreme/scss/bundles/dx.light.scss",
               "src/styles.scss"
             ],
             "scripts": []
