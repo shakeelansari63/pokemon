@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PokemonGridComponent } from './components/pokemon-grid/pokemon-grid.component'
+import { PokemonGridComponent } from '../components/pokemon-grid/pokemon-grid.component'
 
 const routes: Routes = [
   {path: '', component: PokemonGridComponent}
