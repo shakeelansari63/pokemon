@@ -1,7 +1,7 @@
 <div class="container" >
     <!-- Gid of pokemons -->
     <div class="pokemon-grid">
-        <div *ngFor="let poke of pokeList" class="pokemon-unit">
+        <div *ngFor="let poke of pokeList" class="pokemon-unit m15">
             <div class="pokemon-id"> {{ poke.id }}</div>
             <img [src]="poke.img" alt="poke.name">
             <div class="pokemon-name dx-theme-text-color">
@@ -11,22 +11,24 @@
     </div>
 
     <!-- Navigation Buttons -->
-    <div class="pokemon-nav">
-        <div class="navigate-icon">
-            <dx-button 
-                icon="chevronleft" 
-                text="Prev" 
-                (onClick)="navigatePrev()"
-                type="default"></dx-button>
-        </div>
+    <div class="m15">
+        <dx-toolbar>
+            <dxi-item location="before">
+                <dx-button 
+                    icon="chevronleft" 
+                    text="Prev" 
+                    (onClick)="navigatePrev()"
+                    type="default"></dx-button>
+            </dxi-item>
 
-        <div class="navigate-icon">
-            <dx-button 
-                icon="chevronright" 
-                text="Next" 
-                [rtlEnabled]="true" 
-                (onClick)="navigateNext()"
-                type="default"></dx-button>
-        </div>
+            <dxi-item location="after">
+                <dx-button 
+                    icon="chevronright" 
+                    text="Next" 
+                    [rtlEnabled]="true" 
+                    (onClick)="navigateNext()"
+                    type="default"></dx-button>
+            </dxi-item>
+        </dx-toolbar>
     </div>
 </div>

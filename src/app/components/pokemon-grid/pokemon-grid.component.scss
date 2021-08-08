@@ -17,10 +17,10 @@
 .pokemon-nav {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .pokemon-unit {
-  margin: 15px;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgb(182, 182, 182);
   border: 1px solid rgba(182, 182, 182, 0.2);
@@ -47,4 +47,8 @@
   background-color: rgba(20, 20, 20, 0.5);
   padding: 5px;
   color: #fff;
+}
+
+.m15 {
+  margin: 15px;
 }
