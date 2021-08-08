@@ -13,11 +13,20 @@
     <!-- Navigation Buttons -->
     <div class="pokemon-nav">
         <div class="navigate-icon">
-            <dx-button icon="chevronleft" text="Prev" (onClick)="navigatePrev()"></dx-button>
+            <dx-button 
+                icon="chevronleft" 
+                text="Prev" 
+                (onClick)="navigatePrev()"
+                type="default"></dx-button>
         </div>
 
         <div class="navigate-icon">
-            <dx-button icon="chevronright" text="Next" [rtlEnabled]="true" (onClick)="navigateNext()"></dx-button>
+            <dx-button 
+                icon="chevronright" 
+                text="Next" 
+                [rtlEnabled]="true" 
+                (onClick)="navigateNext()"
+                type="default"></dx-button>
         </div>
     </div>
 </div>
