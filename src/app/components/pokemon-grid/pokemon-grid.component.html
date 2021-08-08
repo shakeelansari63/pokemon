@@ -1,18 +1,23 @@
-<div class="pokemon-nav container" >
-    <div class="navigate-icon">
-        <dx-button icon="chevronleft" (click)="navigatePrev()"></dx-button>
-    </div>
-
+<div class="container" >
+    <!-- Gid of pokemons -->
     <div class="pokemon-grid">
         <div *ngFor="let poke of pokeList" class="pokemon-unit">
+            <div class="pokemon-id"> {{ poke.id }}</div>
             <img [src]="poke.img" alt="poke.name">
-            <div class="pokemon-name">
+            <div class="pokemon-name dx-theme-text-color">
                 {{ poke.name | titleCase}}
             </div>
         </div>
     </div>
 
-    <div class="navigate-icon">
-        <dx-button icon="chevronright" (click)="navigateNext()"></dx-button>
+    <!-- Navigation Buttons -->
+    <div class="pokemon-nav">
+        <div class="navigate-icon">
+            <dx-button icon="chevronleft" text="Prev" (onClick)="navigatePrev()"></dx-button>
+        </div>
+
+        <div class="navigate-icon">
+            <dx-button icon="chevronright" text="Next" [rtlEnabled]="true" (onClick)="navigateNext()"></dx-button>
+        </div>
     </div>
 </div>

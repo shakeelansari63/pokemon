@@ -2,6 +2,7 @@ export interface PokemonListItem {
     name: string;
     url: string;
     img?: string | null;
+    id?: number | null;
 }
 
 export interface PokemonList {
@@ -32,6 +33,31 @@ interface Sprites {
     versions: any;
 }
 
+export interface Type {
+    slot: number;
+    type: {
+        name: string;
+        url: string;
+    }
+}
+
+export interface Stat {
+    base_stat: number;
+    effort: number;
+    stat: {
+        name: string;
+        url: string;
+    }
+}
+
+export interface Move {
+    move: {
+        name: string;
+        url: string;
+    },
+    version_group_details: [];
+}
+
 export interface PokemonInfo {
     abilities: [];
     base_experience: number;
@@ -42,12 +68,12 @@ export interface PokemonInfo {
     id: number;
     is_default: boolean;
     location_area_encounters: string;
-    moves: [];
+    moves: Move[];
     name: string;
     past_types: [];
     species: any;
     sprites: Sprites;
-    stats: [];
-    types: [];
+    stats: Stat[];
+    types: Type[];
     weight: number;
 }

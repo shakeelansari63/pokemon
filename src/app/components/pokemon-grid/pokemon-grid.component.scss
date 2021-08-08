@@ -11,37 +11,40 @@
 
 .pokemon-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .pokemon-nav {
-  display: grid;
-  grid-template-columns: 1fr 10fr 1fr;
+  display: flex;
+  justify-content: space-between;
 }
 
 .pokemon-unit {
+  margin: 15px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(182, 182, 182);
+  border: 1px solid rgba(182, 182, 182, 0.2);
+  position: relative;
   width: 150px;
   height: 150px;
   text-align: center;
+  cursor: pointer;
 
   &:hover {
     transform: scale(90%);
   }
 }
 
-@media (max-width: 850px) {
-  .pokemon-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-  }
+.navigate-icon {
+  margin: 10px auto;
 }
 
-@media (max-width: 550px) {
-  .pokemon-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(13, 1fr);
-  }
+.pokemon-id {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  border-radius: 25px;
+  background-color: rgba(20, 20, 20, 0.5);
+  padding: 5px;
+  color: #fff;
 }
