@@ -16,8 +16,19 @@
         <!-- Display Pokemon Stats -->
         <div class="stats-rows">
             <div class="stat" *ngFor="let pokeStat of pokemonDetail.stats">
-                <h3>{{ pokeStat.stat.name | titleCase }}: </h3>
-                <h3>{{ pokeStat.base_stat }}</h3>
+                <p>{{ pokeStat.stat.name | titleCase }}: </p>
+                <p>{{ pokeStat.base_stat }}</p>
+            </div>
+        </div>
+
+        <!-- Display Moves -->
+        <div class="moves-row">
+            <p class="m5">Moves: </p>
+            <div class="moves">
+                <div class="pill dx-theme-accent-as-background-color" 
+                        *ngFor="let pokeMove of pokemonDetail.moves">
+                    <p class="m5">{{ pokeMove.move.name | titleCase }}</p>
+                </div>
             </div>
         </div>
 </dx-scroll-view>

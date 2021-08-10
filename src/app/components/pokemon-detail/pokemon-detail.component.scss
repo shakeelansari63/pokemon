@@ -47,10 +47,37 @@
   }
 }
 
+.moves-row {
+  display: flex;
+  width: 100%;
+  margin: 5px 10px;
+
+  .moves-name {
+    margin: 0px;
+  }
+
+  .moves {
+    display: flex;
+    flex-wrap: wrap;
+
+    .pill {
+      margin: 5px;
+      display: block;
+      padding: 0px;
+      border-radius: 20px;
+      color: #fff;
+    }
+  }
+}
+
 .ml15 {
   margin-left: 15px;
 }
 
 .mr10 {
   margin-right: 10px;
+}
+
+.m5 {
+  margin: 5px;
 }
