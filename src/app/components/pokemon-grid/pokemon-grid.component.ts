@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeapiService } from '../../services/pokeapi.service';
-import { PokemonList, PokemonListItem } from '../../interfaces/pokemon-api-data'
+import { PokemonList, PokemonListItem } from '../../models/pokemon-api-data'
 
 @Component({
   selector: 'app-pokemon-grid',
@@ -10,6 +10,9 @@ import { PokemonList, PokemonListItem } from '../../interfaces/pokemon-api-data'
 export class PokemonGridComponent implements OnInit {
 
   pokeList: PokemonListItem[] = [];
+  pokemonId: number;
+  pokemonName: string;
+  pokemonDetailVisible: boolean;
 
   constructor(private pokeService: PokeapiService) { 
     // Subscribe to Pokemon Service Observables
@@ -29,6 +32,12 @@ export class PokemonGridComponent implements OnInit {
 
   navigatePrev() {
     this.pokeService.getPrevPage()
+  }
+
+  displayPokemonDetail(id: number, name: string) {
+    this.pokemonId = id;
+    this.pokemonName = name;
+    this.pokemonDetailVisible = true;
   }
 
 }

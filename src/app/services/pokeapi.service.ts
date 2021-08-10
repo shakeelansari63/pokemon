@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
 
-import { PokemonList, PokemonListItem, PokemonInfo } from '../interfaces/pokemon-api-data'
+import { PokemonList, PokemonListItem, PokemonInfo } from '../models/pokemon-api-data'
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,10 @@ export class PokeapiService {
   // Create Subjects and Observables
   pokemons$: Subject<PokemonListItem[]>;
   pokemons: Observable<PokemonListItem[]>;
+
+  pokemonDetail$: Subject<PokemonInfo>
+  pokemonDetail: Observable<PokemonInfo>;
+
   nextPokemonApi: string;
   prevPokemonApi: string;
 
@@ -22,6 +26,9 @@ export class PokeapiService {
     // Initialize Subjects and Observables
     this.pokemons$ = new Subject();
     this.pokemons = this.pokemons$.asObservable();
+
+    this.pokemonDetail$ = new Subject();
+    this.pokemonDetail = this.pokemonDetail$.asObservable();
   }
 
   getPokemonList(url: string) {
@@ -64,5 +71,12 @@ export class PokeapiService {
 
   getPrevPage() {
     this.getPokemonList(this.prevPokemonApi)
+  }
+
+  getPokemonById(id: number) {
+    // Get data form API
+    this.http.get(`${this.pokemonApi}/${id}`).subscribe(pokeData => {
+      this.pokemonDetail$.next(pokeData as PokemonInfo);
+    })
   }
 }

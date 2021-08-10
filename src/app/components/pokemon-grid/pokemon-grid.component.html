@@ -2,10 +2,12 @@
     <!-- Gid of pokemons -->
     <div class="pokemon-grid">
         <div *ngFor="let poke of pokeList" class="pokemon-unit m15">
-            <div class="pokemon-id"> {{ poke.id }}</div>
-            <img [src]="poke.img" alt="poke.name">
-            <div class="pokemon-name dx-theme-text-color">
-                {{ poke.name | titleCase}}
+            <div (click)="displayPokemonDetail(poke.id, poke.name)">
+                <div class="pokemon-id"> {{ poke.id }}</div>
+                <img [src]="poke.img" alt="poke.name">
+                <div class="pokemon-name dx-theme-text-color">
+                    {{ poke.name | titleCase}}
+                </div>
             </div>
         </div>
     </div>
@@ -31,4 +33,21 @@
             </dxi-item>
         </dx-toolbar>
     </div>
+
+    <!-- Pokemon Details Popup -->
+    <dx-popup
+        *ngIf="pokemonId"
+        [width]="400"
+        [height]="600"
+        [showTitle]="true"
+        [title]="pokemonName | titleCase"
+        [dragEnabled]="false"
+        [closeOnOutsideClick]="true"
+        [(visible)]="pokemonDetailVisible">
+            <app-pokemon-detail 
+                *ngIf="pokemonId" 
+                [pokemonId]="pokemonId" 
+                [pokemonName]="pokemonName">
+            </app-pokemon-detail>
+    </dx-popup>
 </div>

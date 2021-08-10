@@ -1,0 +1,32 @@
+.pokemon-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 7px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 5px #999;
+
+    .pokemon-icon {
+        display: block;
+        padding: 10px;
+
+        img {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    .pokemon-types {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+.ml15 {
+    margin-left: 15px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
