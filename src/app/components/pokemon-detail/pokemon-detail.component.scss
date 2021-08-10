@@ -31,6 +31,22 @@
   }
 }
 
+.stats-rows {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 5px;
+
+  .stat {
+    margin: 5px 5px;
+    display: grid;
+    padding: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #aaa;
+  }
+}
+
 .ml15 {
   margin-left: 15px;
 }

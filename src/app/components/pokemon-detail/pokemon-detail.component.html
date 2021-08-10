@@ -1,14 +1,23 @@
 <dx-scroll-view *ngIf="pokemonDetail"
     [useNative]="false">
+        <!-- Display Pokemon Card with images -->
         <div class="pokemon-title-row">
             <div class="pokemon-icon">
                 <img [src]="pokemonDetail.sprites.other.dream_world.front_default" alt="">
             </div>
             <div class="pokemon-types">
                 <div class="type-row" *ngFor="let pokemonType of pokemonDetail.types">
-                    <img src="../../../assets/images/{{pokemonType.type.name}}.png">
+                    <img src="assets/images/{{pokemonType.type.name}}.png">
                     <h3>{{ pokemonType.type.name | titleCase }}</h3>
                 </div>
+            </div>
+        </div>
+
+        <!-- Display Pokemon Stats -->
+        <div class="stats-rows">
+            <div class="stat" *ngFor="let pokeStat of pokemonDetail.stats">
+                <h3>{{ pokeStat.stat.name | titleCase }}: </h3>
+                <h3>{{ pokeStat.base_stat }}</h3>
             </div>
         </div>
 </dx-scroll-view>
