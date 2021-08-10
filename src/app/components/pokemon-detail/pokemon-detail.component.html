@@ -4,9 +4,11 @@
             <div class="pokemon-icon">
                 <img [src]="pokemonDetail.sprites.other.dream_world.front_default" alt="">
             </div>
-            <div class="ml15 mr10"><h3>Type: </h3></div>
             <div class="pokemon-types">
-                <h3 *ngFor="let pokemonType of pokemonDetail.types">{{ pokemonType.type.name | titleCase }}</h3>
+                <div class="type-row" *ngFor="let pokemonType of pokemonDetail.types">
+                    <img src="../../../assets/images/{{pokemonType.type.name}}.png">
+                    <h3>{{ pokemonType.type.name | titleCase }}</h3>
+                </div>
             </div>
         </div>
 </dx-scroll-view>

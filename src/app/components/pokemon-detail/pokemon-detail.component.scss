@@ -1,32 +1,40 @@
 .pokemon-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 7px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 5px #999;
+
+  .pokemon-icon {
+    display: block;
+    padding: 10px;
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  .pokemon-types {
     display: flex;
-    flex-wrap: wrap;
-    margin: 7px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    box-shadow: 0px 0px 5px #999;
+    flex-direction: column;
+    justify-content: space-around;
 
-    .pokemon-icon {
-        display: block;
-        padding: 10px;
+    .type-row {
+      display: flex;
 
-        img {
-            width: 150px;
-            height: 150px;
-        }
+      img {
+        margin: 0 5px;
+      }
     }
-
-    .pokemon-types {
-        display: flex;
-        flex-direction: column;
-    }
-
+  }
 }
 
 .ml15 {
-    margin-left: 15px;
+  margin-left: 15px;
 }
 
 .mr10 {
-    margin-right: 10px;
+  margin-right: 10px;
 }
