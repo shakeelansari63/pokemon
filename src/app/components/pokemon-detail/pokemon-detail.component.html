@@ -6,6 +6,7 @@
         [title]="pokemonName | titleCase"
         [dragEnabled]="true"
         [closeOnOutsideClick]="true"
+        [deferRendering]="false"
         [(visible)]="pokemonDetailVisible">
         <dx-scroll-view *ngIf="pokemonDetail"
             [useNative]="false">
