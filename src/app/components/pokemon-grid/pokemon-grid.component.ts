@@ -12,7 +12,6 @@ export class PokemonGridComponent implements OnInit {
   pokeList: PokemonListItem[] = [];
   pokemonId: number;
   pokemonName: string;
-  pokemonDetailVisible: boolean;
 
   constructor(private pokeService: PokeapiService) { 
     // Subscribe to Pokemon Service Observables
@@ -34,10 +33,8 @@ export class PokemonGridComponent implements OnInit {
     this.pokeService.getPrevPage()
   }
 
-  displayPokemonDetail(id: number, name: string) {
+  displayPokemonDetail(id: number) {
     this.pokemonId = id;
-    this.pokemonName = name;
-    this.pokemonDetailVisible = true;
   }
 
 }

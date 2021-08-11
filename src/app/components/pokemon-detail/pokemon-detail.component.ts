@@ -10,22 +10,27 @@ import { PokemonInfo } from '../../models/pokemon-api-data';
 export class PokemonDetailComponent implements OnChanges {
 
   @Input() pokemonId: number;
-  @Input() pokemonName: string;
-  @Input() pokemonDetailVisible: boolean;
-
+  pokemonDetailVisible: boolean;
+  pokemonName: string;
   pokemonDetail: PokemonInfo;
 
-  constructor(private pokeService: PokeapiService) { }
+  constructor(private pokeService: PokeapiService) { 
+    this.pokeService.pokemonDetailVisible.subscribe(visibility => {
+      this.pokemonDetailVisible = visibility;
+    })
+  }
 
   ngOnChanges(): void {
     // Reset
     this.pokemonDetail = null;
 
     // get detail form server
-    this.pokeService.getPokemonById(this.pokemonId);
+    this.pokeService.getPokemonByIdOrName(this.pokemonId);
 
     this.pokeService.pokemonDetail.subscribe(detail => {
       this.pokemonDetail = detail;
+
+      this.pokemonName = detail.name;
     })
   }
 

@@ -13,22 +13,34 @@ export class PokeapiService {
   pokemonApi: string = `${this.apiBase}/pokemon`;
 
   // Create Subjects and Observables
+  allPokemons$: Subject<PokemonListItem[]>;
+  allPokemons: Observable<PokemonListItem[]>;
+
   pokemons$: Subject<PokemonListItem[]>;
   pokemons: Observable<PokemonListItem[]>;
 
   pokemonDetail$: Subject<PokemonInfo>
   pokemonDetail: Observable<PokemonInfo>;
 
+  pokemonDetailVisible$: Subject<boolean>;
+  pokemonDetailVisible: Observable<boolean>;
+
   nextPokemonApi: string;
   prevPokemonApi: string;
 
   constructor(private http: HttpClient) {
     // Initialize Subjects and Observables
+    this.allPokemons$ = new Subject();
+    this.allPokemons = this.allPokemons$.asObservable();
+
     this.pokemons$ = new Subject();
     this.pokemons = this.pokemons$.asObservable();
 
     this.pokemonDetail$ = new Subject();
     this.pokemonDetail = this.pokemonDetail$.asObservable();
+
+    this.pokemonDetailVisible$ = new Subject();
+    this.pokemonDetailVisible = this.pokemonDetailVisible$.asObservable();
   }
 
   getPokemonList(url: string) {
@@ -55,6 +67,14 @@ export class PokeapiService {
     })
   }
 
+  getAllPokemons() {
+    this.http.get(`${this.pokemonApi}?limit=5000`).subscribe(pokeList => {
+      this.allPokemons$.next((pokeList as PokemonList).results);
+    }) 
+
+    return this.allPokemons;
+  }
+
   getFirstList() {
     const offset: number =  0;
     const limit: number = 30;
@@ -73,10 +93,21 @@ export class PokeapiService {
     this.getPokemonList(this.prevPokemonApi)
   }
 
-  getPokemonById(id: number) {
+  getPokemonByIdOrName(name_or_id: string | number) {
     // Get data form API
-    this.http.get(`${this.pokemonApi}/${id}`).subscribe(pokeData => {
+    this.http.get(`${this.pokemonApi}/${name_or_id}`).subscribe(pokeData => {
       this.pokemonDetail$.next(pokeData as PokemonInfo);
+
+      // Make the Detail View visible
+      this.pokemonDetailVisible$.next(true);
     })
+  }
+
+  searchPokemon(name_or_id: string) {
+    // Do nothing if name or id is empty
+    if (!name_or_id) { return }
+
+    // Search for pokemon
+    this.getPokemonByIdOrName(name_or_id)
   }
 }

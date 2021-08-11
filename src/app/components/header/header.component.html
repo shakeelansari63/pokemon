@@ -9,6 +9,11 @@
         </dxi-item>
         <dxi-item
             location="after">
-            <dx-text-box placeholder="Search"></dx-text-box>
+            <dx-autocomplete
+                placeholder="Search"
+                [(value)]="searchPokename"
+                [showClearButton]="true"
+                [dataSource]="pokemons"
+                (onEnterKey)="searchPokemon()"></dx-autocomplete>
         </dxi-item>
     </dx-toolbar>
