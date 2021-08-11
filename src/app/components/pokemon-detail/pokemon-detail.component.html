@@ -25,8 +25,8 @@
             <!-- Display Pokemon Stats -->
             <div class="stats-rows">
                 <div class="stat" *ngFor="let pokeStat of pokemonDetail.stats">
-                    <p>{{ pokeStat.stat.name | titleCase }}: </p>
-                    <p>{{ pokeStat.base_stat }}</p>
+                    <p class="m5">{{ pokeStat.stat.name | titleCase }}: </p>
+                    <p class="m5">{{ pokeStat.base_stat }}</p>
                 </div>
             </div>
     

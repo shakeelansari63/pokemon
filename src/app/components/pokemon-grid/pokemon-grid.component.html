@@ -19,6 +19,7 @@
                 <dx-button 
                     icon="chevronleft" 
                     text="Prev" 
+                    [disabled]="!pokeService.prevPokemonApi"
                     (onClick)="navigatePrev()"
                     type="default"></dx-button>
             </dxi-item>
@@ -27,6 +28,7 @@
                 <dx-button 
                     icon="chevronright" 
                     text="Next" 
+                    [disabled]="!pokeService.nextPokemonApi"
                     [rtlEnabled]="true" 
                     (onClick)="navigateNext()"
                     type="default"></dx-button>

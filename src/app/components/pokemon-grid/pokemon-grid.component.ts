@@ -13,7 +13,7 @@ export class PokemonGridComponent implements OnInit {
   pokemonId: number | string;
   pokemonName: string;
 
-  constructor(private pokeService: PokeapiService) { 
+  constructor(public pokeService: PokeapiService) { 
     // Subscribe to Pokemon Service Observables
     this.pokeService.pokemons.subscribe(pList => {
       this.pokeList = pList;

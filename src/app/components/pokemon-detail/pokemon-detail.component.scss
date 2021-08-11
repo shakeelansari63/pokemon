@@ -25,7 +25,9 @@
       display: flex;
 
       img {
-        margin: 0 5px;
+        margin: auto;
+        width: 40px;
+        height: 40px;
       }
     }
   }
@@ -37,10 +39,10 @@
   padding: 5px;
 
   .stat {
-    margin: 5px 5px;
-    display: grid;
-    padding: 5px;
-    grid-template-columns: repeat(2, 1fr);
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 2px 2px 5px #aaa;
