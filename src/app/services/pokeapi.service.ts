@@ -25,6 +25,9 @@ export class PokeapiService {
   pokemonDetailVisible$: Subject<boolean>;
   pokemonDetailVisible: Observable<boolean>;
 
+  pokemonDetailNameId$: Subject<number | string>;
+  pokemonDetailNameId: Observable<number | string>;
+
   nextPokemonApi: string;
   prevPokemonApi: string;
 
@@ -41,6 +44,9 @@ export class PokeapiService {
 
     this.pokemonDetailVisible$ = new Subject();
     this.pokemonDetailVisible = this.pokemonDetailVisible$.asObservable();
+
+    this.pokemonDetailNameId$ = new Subject();
+    this.pokemonDetailNameId = this.pokemonDetailNameId$.asObservable();
   }
 
   getPokemonList(url: string) {
@@ -103,11 +109,12 @@ export class PokeapiService {
     })
   }
 
-  searchPokemon(name_or_id: string) {
+  searchPokemon(name_or_id: string | number) {
     // Do nothing if name or id is empty
     if (!name_or_id) { return }
 
     // Search for pokemon
+
     this.getPokemonByIdOrName(name_or_id)
   }
 }

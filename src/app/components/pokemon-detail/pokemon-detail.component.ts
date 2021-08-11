@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PokeapiService } from '../../services/pokeapi.service';
 import { PokemonInfo } from '../../models/pokemon-api-data';
 
@@ -7,26 +7,24 @@ import { PokemonInfo } from '../../models/pokemon-api-data';
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.scss']
 })
-export class PokemonDetailComponent implements OnChanges {
+export class PokemonDetailComponent implements OnInit {
 
-  @Input() pokemonId: number;
   pokemonDetailVisible: boolean;
   pokemonName: string;
   pokemonDetail: PokemonInfo;
 
-  constructor(private pokeService: PokeapiService) { 
-    this.pokeService.pokemonDetailVisible.subscribe(visibility => {
-      this.pokemonDetailVisible = visibility;
-    })
-  }
+  constructor(private pokeService: PokeapiService) {  }
 
-  ngOnChanges(): void {
+  ngOnInit(): void {
     // Reset
     this.pokemonDetail = null;
 
-    // get detail form server
-    this.pokeService.getPokemonByIdOrName(this.pokemonId);
+    // Subscribe to Visibility Obsevable
+    this.pokeService.pokemonDetailVisible.subscribe(visibility => {
+      this.pokemonDetailVisible = visibility;
+    })
 
+    // Subscribe to Pokemon Detail Data
     this.pokeService.pokemonDetail.subscribe(detail => {
       this.pokemonDetail = detail;
 

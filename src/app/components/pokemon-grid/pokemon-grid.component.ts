@@ -10,7 +10,7 @@ import { PokemonList, PokemonListItem } from '../../models/pokemon-api-data'
 export class PokemonGridComponent implements OnInit {
 
   pokeList: PokemonListItem[] = [];
-  pokemonId: number;
+  pokemonId: number | string;
   pokemonName: string;
 
   constructor(private pokeService: PokeapiService) { 
@@ -33,8 +33,9 @@ export class PokemonGridComponent implements OnInit {
     this.pokeService.getPrevPage()
   }
 
-  displayPokemonDetail(id: number) {
-    this.pokemonId = id;
+  displayPokemonDetail(name_or_id: string | number) {
+    this.pokemonId = name_or_id
+    this.pokeService.searchPokemon(name_or_id)
   }
 
 }
