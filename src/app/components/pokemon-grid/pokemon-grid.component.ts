@@ -22,20 +22,36 @@ export class PokemonGridComponent implements OnInit {
 
   ngOnInit(): void {
     // Call first Set
-    this.pokeService.getFirstList();
+    this.pokeService.generateFirstList();
   }
 
   navigateNext() {
-    this.pokeService.getNextPage()
+    this.pokeService.generateNextPage()
   }
 
   navigatePrev() {
-    this.pokeService.getPrevPage()
+    this.pokeService.generatePrevPage()
+  }
+
+  navigateFirst() {
+    this.pokeService.generateFirstList()
+  }
+
+  navigateLast() {
+    this.pokeService.generateLastList()
   }
 
   displayPokemonDetail(name_or_id: string | number) {
     this.pokemonId = name_or_id
     this.pokeService.searchPokemon(name_or_id)
+  }
+
+  get prevUrl() {
+    return this.pokeService.getPrevUrl()
+  }
+
+  get nextUrl() {
+    return this.pokeService.getNextUrl()
   }
 
 }

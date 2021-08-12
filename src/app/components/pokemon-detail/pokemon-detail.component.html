@@ -3,7 +3,7 @@
         [width]="370"
         [height]="500"
         [showTitle]="true"
-        [title]="pokemonName | titleCase"
+        [title]="pokemonName | titleCase | nameFormat"
         [dragEnabled]="true"
         [closeOnOutsideClick]="true"
         [deferRendering]="false"
@@ -13,7 +13,7 @@
             <!-- Display Pokemon Card with images -->
             <div class="pokemon-title-row">
                 <div class="pokemon-icon">
-                    <img [src]="pokemonDetail.sprites.other.dream_world.front_default" alt="">
+                    <img [src]="pokeIcon" alt="">
                 </div>
                 <div class="pokemon-types">
                     <div class="type-row" *ngFor="let pokemonType of pokemonDetail.types">

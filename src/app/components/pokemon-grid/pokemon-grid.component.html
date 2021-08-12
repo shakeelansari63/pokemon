@@ -6,7 +6,7 @@
                 <div class="pokemon-id"> {{ poke.id }}</div>
                 <img [src]="poke.img" alt="poke.name">
                 <div class="pokemon-name dx-theme-text-color">
-                    {{ poke.name | titleCase}}
+                    {{ poke.name | titleCase | nameFormat}}
                 </div>
             </div>
         </div>
@@ -17,9 +17,18 @@
         <dx-toolbar>
             <dxi-item location="before">
                 <dx-button 
+                    icon="chevrondoubleleft" 
+                    text="First" 
+                    [disabled]="!prevUrl"
+                    (onClick)="navigateFirst()"
+                    type="default"></dx-button>
+            </dxi-item>
+
+            <dxi-item location="before">
+                <dx-button 
                     icon="chevronleft" 
                     text="Prev" 
-                    [disabled]="!pokeService.prevPokemonApi"
+                    [disabled]="!prevUrl"
                     (onClick)="navigatePrev()"
                     type="default"></dx-button>
             </dxi-item>
@@ -28,9 +37,19 @@
                 <dx-button 
                     icon="chevronright" 
                     text="Next" 
-                    [disabled]="!pokeService.nextPokemonApi"
+                    [disabled]="!nextUrl"
                     [rtlEnabled]="true" 
                     (onClick)="navigateNext()"
+                    type="default"></dx-button>
+            </dxi-item>
+
+            <dxi-item location="after">
+                <dx-button 
+                    icon="chevrondoubleright" 
+                    text="Last" 
+                    [disabled]="!nextUrl"
+                    [rtlEnabled]="true" 
+                    (onClick)="navigateLast()"
                     type="default"></dx-button>
             </dxi-item>
         </dx-toolbar>

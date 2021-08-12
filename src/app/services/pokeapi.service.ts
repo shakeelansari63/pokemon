@@ -15,6 +15,7 @@ export class PokeapiService {
   // Create Subjects and Observables
   allPokemons$: Subject<PokemonListItem[]>;
   allPokemons: Observable<PokemonListItem[]>;
+  allPokemonsCount: number;
 
   pokemons$: Subject<PokemonListItem[]>;
   pokemons: Observable<PokemonListItem[]>;
@@ -49,7 +50,7 @@ export class PokeapiService {
     this.pokemonDetailNameId = this.pokemonDetailNameId$.asObservable();
   }
 
-  getPokemonList(url: string) {
+  generatePokemonList(url: string) {
     // Error Handling 
     if (! url) {
       return;
@@ -76,30 +77,32 @@ export class PokeapiService {
   getAllPokemons() {
     this.http.get(`${this.pokemonApi}?limit=5000`).subscribe(pokeList => {
       this.allPokemons$.next((pokeList as PokemonList).results);
+
+      this.allPokemonsCount = (pokeList as PokemonList).results.length;
     }) 
 
     return this.allPokemons;
   }
 
-  getFirstList() {
+  generateFirstList() {
     const offset: number =  0;
     const limit: number = 30;
 
     // generate API Url Link
     const firstSetApiUrl: string = `${this.pokemonApi}?offset=${offset}&limit=${limit}`
 
-    this.getPokemonList(firstSetApiUrl);
+    this.generatePokemonList(firstSetApiUrl);
   }
 
-  getNextPage() {
-    this.getPokemonList(this.nextPokemonApi)
+  generateNextPage() {
+    this.generatePokemonList(this.nextPokemonApi)
   }
 
-  getPrevPage() {
-    this.getPokemonList(this.prevPokemonApi)
+  generatePrevPage() {
+    this.generatePokemonList(this.prevPokemonApi)
   }
 
-  getPokemonByIdOrName(name_or_id: string | number) {
+  generatePokemonByIdOrName(name_or_id: string | number) {
     // Get data form API
     this.http.get(`${this.pokemonApi}/${name_or_id}`).subscribe(pokeData => {
       this.pokemonDetail$.next(pokeData as PokemonInfo);
@@ -115,6 +118,24 @@ export class PokeapiService {
 
     // Search for pokemon
 
-    this.getPokemonByIdOrName(name_or_id)
+    this.generatePokemonByIdOrName(name_or_id)
+  }
+
+  getPrevUrl() {
+    return this.prevPokemonApi;
+  }
+
+  getNextUrl() {
+    return this.nextPokemonApi;
+  }
+
+  generateLastList() {
+    const limit: number = 30;
+    const offset: number =  (Math.floor(this.allPokemonsCount / 30)) * 30 ;
+
+    // generate API Url Link
+    const lastSetApiUrl: string = `${this.pokemonApi}?offset=${offset}&limit=${limit}`
+
+    this.generatePokemonList(lastSetApiUrl);
   }
 }

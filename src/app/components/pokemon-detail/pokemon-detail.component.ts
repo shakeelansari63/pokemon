@@ -12,6 +12,7 @@ export class PokemonDetailComponent implements OnInit {
   pokemonDetailVisible: boolean;
   pokemonName: string;
   pokemonDetail: PokemonInfo;
+  pokeIcon: string;
 
   constructor(private pokeService: PokeapiService) {  }
 
@@ -29,6 +30,12 @@ export class PokemonDetailComponent implements OnInit {
       this.pokemonDetail = detail;
 
       this.pokemonName = detail.name;
+
+      this.pokeIcon = this.pokemonDetail.sprites.other.dream_world.front_default ? 
+                        this.pokemonDetail.sprites.other.dream_world.front_default : 
+                        this.pokemonDetail.sprites.other["official-artwork"].front_default ? 
+                          this.pokemonDetail.sprites.other["official-artwork"].front_default : 
+                          this.pokemonDetail.sprites.front_default
     })
   }
 
