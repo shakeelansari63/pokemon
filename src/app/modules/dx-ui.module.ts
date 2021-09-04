@@ -5,14 +5,16 @@ import { DxTextBoxModule } from 'devextreme-angular/ui/text-box';
 import { DxPopupModule } from 'devextreme-angular/ui/popup';
 import { DxScrollViewModule } from 'devextreme-angular/ui/scroll-view';
 import { DxAutocompleteModule } from 'devextreme-angular/ui/autocomplete';
-
+import { DxLoadPanelModule } from 'devextreme-angular/ui/load-panel'
+ 
 const dxUi = [
   DxButtonModule,
   DxToolbarModule,
   DxTextBoxModule,
   DxPopupModule,
   DxScrollViewModule,
-  DxAutocompleteModule
+  DxAutocompleteModule,
+  DxLoadPanelModule
 ]
 
 @NgModule({

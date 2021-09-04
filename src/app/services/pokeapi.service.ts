@@ -32,6 +32,9 @@ export class PokeapiService {
   nextPokemonApi: string;
   prevPokemonApi: string;
 
+  loadingVisible$: Subject<boolean>;
+  loadingVisible: Observable<boolean>;
+
   constructor(private http: HttpClient) {
     // Initialize Subjects and Observables
     this.allPokemons$ = new Subject();
@@ -48,6 +51,9 @@ export class PokeapiService {
 
     this.pokemonDetailNameId$ = new Subject();
     this.pokemonDetailNameId = this.pokemonDetailNameId$.asObservable();
+
+    this.loadingVisible$ = new Subject();
+    this.loadingVisible = this.loadingVisible$.asObservable()
   }
 
   generatePokemonList(url: string) {
@@ -137,5 +143,13 @@ export class PokeapiService {
     const lastSetApiUrl: string = `${this.pokemonApi}?offset=${offset}&limit=${limit}`
 
     this.generatePokemonList(lastSetApiUrl);
+  }
+
+  showLoading() {
+    this.loadingVisible$.next(true)
+  }
+
+  hideLoading() {
+    this.loadingVisible$.next(false)
   }
 }

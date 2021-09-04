@@ -12,11 +12,17 @@ export class PokemonGridComponent implements OnInit {
   pokeList: PokemonListItem[] = [];
   pokemonId: number | string;
   pokemonName: string;
+  loadingVisible: boolean;
 
   constructor(public pokeService: PokeapiService) { 
     // Subscribe to Pokemon Service Observables
     this.pokeService.pokemons.subscribe(pList => {
       this.pokeList = pList;
+    })
+
+    // Subscribe to pokemon Visible observable
+    this.pokeService.loadingVisible.subscribe(visibility => {
+      this.loadingVisible = visibility;
     })
   }
 

@@ -1,6 +1,6 @@
-<div class="container" >
+<div class="container">
     <!-- Gid of pokemons -->
-    <div class="pokemon-grid">
+    <div class="pokemon-grid" id="pokemon-grid-box">
         <div *ngFor="let poke of pokeList" class="pokemon-unit m15">
             <div (click)="displayPokemonDetail(poke.id)">
                 <div class="pokemon-id"> {{ poke.id }}</div>
@@ -54,6 +54,15 @@
             </dxi-item>
         </dx-toolbar>
     </div>
+
+    <!-- Load Indicator -->
+    <dx-load-panel
+        [shading]="true"
+        shadingColor="rgba(0, 0, 0, 0.4)"
+        [closeOnOutsideClick]="false"
+        [(visible)]="loadingVisible"
+        [position]="{of: '#pokemon-grid-box'}">
+    </dx-load-panel>
 
     <!-- Pokemon Details Popup -->
     <app-pokemon-detail></app-pokemon-detail>
